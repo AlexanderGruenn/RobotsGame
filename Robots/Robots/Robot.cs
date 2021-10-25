@@ -8,5 +8,15 @@ namespace Robots
 {
     public class Robot : Figure
     {
+
+        public Robot() : base('&')
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

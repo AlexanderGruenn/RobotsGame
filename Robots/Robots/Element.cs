@@ -12,6 +12,11 @@ namespace Robots
         private int X { get; set; }
         private int Y { get; set; }
 
+        protected Element (char c)
+        {
+            Symbol = c;
+        }
+
         public override string ToString()
         {
             return Symbol.ToString();

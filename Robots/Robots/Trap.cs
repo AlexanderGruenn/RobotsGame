@@ -8,5 +8,14 @@ namespace Robots
 {
     public class Trap : Element
     {
+        
+        public Trap () : base ('#')
+        {
+
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

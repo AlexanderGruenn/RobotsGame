@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace Robots
 {
-    public class Player : Figure
+    public class Simulation
     {
+        
 
-        public Player() : base('P')
+        public Simulation (int robotsNumber, int trapsNumber)
         {
 
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }

@@ -25,6 +25,9 @@ namespace Robots
             int maxWidth = Console.LargestWindowWidth;
             int maxHeight = Console.LargestWindowWidth;
 
+            Console.CursorVisible = false;
+
+            PlayingField test = new PlayingField(400, 100);
 
             Console.ReadKey();
         }
