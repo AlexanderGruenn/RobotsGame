@@ -9,7 +9,7 @@ namespace Robots
     public class Trap : Element
     {
         
-        public Trap () : base ('#')
+        public Trap (int x, int y) : base ('#', x, y)
         {
 
         }

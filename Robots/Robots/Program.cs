@@ -27,7 +27,7 @@ namespace Robots
 
             Console.CursorVisible = false;
 
-            PlayingField test = new PlayingField(400, 100);
+            Simulation test = new Simulation(400, 100);
 
             Console.ReadKey();
         }

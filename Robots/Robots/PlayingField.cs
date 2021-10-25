@@ -52,7 +52,7 @@ namespace Robots
             for (int i = 0; i < number; i++)
             {
                 FindNewEmptySpot();
-                field[x, y] = new Robot();
+                field[x, y] = new Robot(x, y);
             }
         }
         public void SpawnTraps(int number)
@@ -60,7 +60,7 @@ namespace Robots
             for (int i = 0; i < number; i++)
             {
                 FindNewEmptySpot();
-                field[x, y] = new Trap();
+                field[x, y] = new Trap(x, y);
             }
         }
         private void FindNewEmptySpot()

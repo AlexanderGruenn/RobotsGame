@@ -12,9 +12,11 @@ namespace Robots
         private int X { get; set; }
         private int Y { get; set; }
 
-        protected Element (char c)
+        protected Element (char c, int x, int y)
         {
             Symbol = c;
+            X = x;
+            Y = y;
         }
 
         public override string ToString()

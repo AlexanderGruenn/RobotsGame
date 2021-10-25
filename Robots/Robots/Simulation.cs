@@ -12,6 +12,7 @@ namespace Robots
 
         public Simulation (int robotsNumber, int trapsNumber)
         {
+            PlayingField field = new PlayingField(robotsNumber, trapsNumber);
 
         }
     }

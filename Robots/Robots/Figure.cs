@@ -8,7 +8,7 @@ namespace Robots
 {
     public abstract class Figure : Element
     {
-        protected Figure (char c) : base (c)
+        protected Figure (char c, int x, int y) : base (c, x, y)
         {
             
         }

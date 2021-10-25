@@ -9,7 +9,7 @@ namespace Robots
     public class Player : Figure
     {
 
-        public Player() : base('P')
+        public Player (int x, int y) : base('P', x, y)
         {
 
         }
