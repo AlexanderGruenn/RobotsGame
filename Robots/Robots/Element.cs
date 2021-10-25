@@ -9,8 +9,8 @@ namespace Robots
     public abstract class Element
     {
         private char Symbol { get; set; }
-        private int X { get; set; }
-        private int Y { get; set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
 
         protected Element (char c, int x, int y)
         {

@@ -10,6 +10,7 @@ namespace Robots
     public class PlayingField
     {
         private Element[,] field = new Element[Console.WindowWidth, Console.WindowHeight];
+        private List<Element> elements = new List<Element>();
         public static Random rng = new Random();
 
         private int X
@@ -33,26 +34,34 @@ namespace Robots
 
         public void Print()
         {
-            for (int x = 0; x < Console.WindowWidth; x++)
+            foreach (var c in elements)
             {
-                for (int y = 0; y < Console.WindowHeight; y++)
-                {
-                    Console.SetCursorPosition(x, y);
-                    if (field[x, y] == null)
-                    {
-                        Console.Write(" ");
-                        continue;
-                    }
-                    Console.Write(field[x,y]);
-                }
+                Console.SetCursorPosition(c.X, c.Y);
+                Console.Write(c.ToString());
             }
+
+            //for (int x = 0; x < Console.WindowWidth; x++)
+            //{
+            //    for (int y = 0; y < Console.WindowHeight; y++)
+            //    {
+            //        Console.SetCursorPosition(x, y);
+            //        if (field[x, y] == null)
+            //        {
+            //            Console.Write(" ");
+            //            continue;
+            //        }
+            //        Console.Write(field[x,y]);
+            //    }
+            //}
         }
         public void SpawnRobots(int number)
         {
             for (int i = 0; i < number; i++)
             {
                 FindNewEmptySpot();
-                field[x, y] = new Robot(x, y);
+                Robot robot = new Robot(x, y);
+                elements.Add(robot);
+                field[x, y] = robot;
             }
         }
         public void SpawnTraps(int number)
@@ -60,7 +69,9 @@ namespace Robots
             for (int i = 0; i < number; i++)
             {
                 FindNewEmptySpot();
-                field[x, y] = new Trap(x, y);
+                Trap trap = new Trap(x, y);
+                elements.Add(trap);
+                field[x, y] = trap;
             }
         }
         private void FindNewEmptySpot()
