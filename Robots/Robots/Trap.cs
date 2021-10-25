@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robots
 {
-    class Trap
+    public class Trap : Element
     {
     }
 }

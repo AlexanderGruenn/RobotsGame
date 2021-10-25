@@ -8,8 +8,9 @@ namespace Robots
 {
     public abstract class Element
     {
-        public char Symbol { get; private set; }
-
+        private char Symbol { get; set; }
+        private int X { get; set; }
+        private int Y { get; set; }
 
         public override string ToString()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Robots
 {
-    public class Player : Figure
+    public class Figure : Element
     {
     }
 }
