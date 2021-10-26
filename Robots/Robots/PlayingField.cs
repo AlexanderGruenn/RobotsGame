@@ -120,7 +120,7 @@ namespace Robots
                         break;
                         // TODO test diagonals
                 }
-
+                field[r.X, r.Y] = r;
                 index++;
             }
 
