@@ -11,6 +11,10 @@ namespace Robots
     {
         private Element[,] field = new Element[Console.WindowWidth, Console.WindowHeight];
         private List<Element> elements = new List<Element>();
+        private List<Robot> robots = new List<Robot>();
+
+        private Player player;
+
         public static Random rng = new Random();
 
         private int X
@@ -61,6 +65,7 @@ namespace Robots
                 FindNewEmptySpot();
                 Robot robot = new Robot(x, y);
                 elements.Add(robot);
+                robots.Add(robot);
                 field[x, y] = robot;
             }
         }
@@ -74,23 +79,60 @@ namespace Robots
                 field[x, y] = trap;
             }
         }
-        private void FindNewEmptySpot()
+        public bool MoveRobots ()
         {
-            while (field[X, Y] != null)
+            int index = 0;
+            foreach (var r in robots)
             {
-                int x = rng.Next(0, Console.WindowWidth);
-                int y = rng.Next(0, Console.WindowHeight);
-            } 
-        }
+                Element.direction dir = BestMove(index);
 
+                index++;
+            }
+
+            return false;
+        }
         public PlayingField (int robotsNumber, int trapsNumber)
         {
-            Player player = new Player();
+            player = new Player();
             elements.Add(player);
             field[x, y] = player;
             SpawnTraps(trapsNumber);
             SpawnRobots(robotsNumber);
             Print();
         }
+
+
+        private void FindNewEmptySpot()
+        {
+            while (field[X, Y] != null)
+            {
+                int x = rng.Next(0, Console.WindowWidth);
+                int y = rng.Next(0, Console.WindowHeight);
+            }
+        }
+        private Element.direction BestMove (int index)
+        {
+            Robot robot = robots[index];
+            Element.direction dir = Element.direction.east;
+            if (robot.X == player.X)
+            {
+                if (robot.Y > player.Y)
+                    return Element.direction.north;
+                if (robot.Y < player.Y)
+                    return Element.direction.south;
+            }
+            if (robot.Y == player.Y)
+            {
+                if (robot.X > player.X)
+                    return Element.direction.west;
+                if (robot.X < player.X)
+                    return Element.direction.east;
+            }
+
+            // TODO DIAGONAL
+
+            return dir;
+        }
+
     }
 }

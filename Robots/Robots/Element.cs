@@ -11,6 +11,19 @@ namespace Robots
         private char Symbol { get; set; }
         public int X { get; private set; }
         public int Y { get; private set; }
+        public direction Direction { get; set; }
+
+        public enum direction
+        {
+            north,
+            northeast,
+            east,
+            southeast,
+            south,
+            southwest,
+            west,
+            northwest,
+        }
 
         protected Element (char c, int x, int y)
         {
