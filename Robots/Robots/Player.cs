@@ -9,7 +9,7 @@ namespace Robots
     public class Player : Figure
     {
 
-        public Player (int x, int y) : base('P', x, y)
+        public Player () : base('@', Console.WindowWidth / 2, Console.WindowHeight / 2)
         {
 
         }

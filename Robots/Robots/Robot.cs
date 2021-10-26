@@ -9,7 +9,7 @@ namespace Robots
     public class Robot : Figure
     {
 
-        public Robot (int x, int y) : base('&', x, y)
+        public Robot (int x, int y) : base('R', x, y)
         {
 
         }

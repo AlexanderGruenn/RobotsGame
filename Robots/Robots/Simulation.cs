@@ -8,12 +8,16 @@ namespace Robots
 {
     public class Simulation
     {
+        PlayingField field;
+        bool gameOver = false;
         
+        
+
+
 
         public Simulation (int robotsNumber, int trapsNumber)
         {
-            PlayingField field = new PlayingField(robotsNumber, trapsNumber);
-
+            field = new PlayingField(robotsNumber, trapsNumber);
         }
     }
 }

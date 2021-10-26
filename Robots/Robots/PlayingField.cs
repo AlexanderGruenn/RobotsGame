@@ -85,6 +85,9 @@ namespace Robots
 
         public PlayingField (int robotsNumber, int trapsNumber)
         {
+            Player player = new Player();
+            elements.Add(player);
+            field[x, y] = player;
             SpawnTraps(trapsNumber);
             SpawnRobots(robotsNumber);
             Print();
