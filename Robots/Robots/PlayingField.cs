@@ -128,8 +128,20 @@ namespace Robots
                 if (robot.X < player.X)
                     return Element.direction.east;
             }
-
-            // TODO DIAGONAL
+            if (robot.X < player.X)
+            {
+                if (robot.Y < player.Y)
+                    return Element.direction.southeast;
+                if (robot.Y > player.Y)
+                    return Element.direction.northeast;
+            }
+            if (robot.X > player.X)
+            {
+                if (robot.Y < player.Y)
+                    return Element.direction.southwest;
+                if (robot.Y > player.Y)
+                    return Element.direction.northwest;
+            }
 
             return dir;
         }
