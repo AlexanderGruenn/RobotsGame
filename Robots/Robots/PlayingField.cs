@@ -85,6 +85,41 @@ namespace Robots
             foreach (var r in robots)
             {
                 Element.direction dir = BestMove(index);
+                field[r.X, r.Y] = null;
+
+                switch (dir)
+                {
+                    case Element.direction.north:
+                        r.Y--;
+                        break;
+                    case Element.direction.south:
+                        r.Y++;
+                        break;
+                    case Element.direction.west:
+                        r.X--;
+                        break;
+                    case Element.direction.east:
+                        r.X++;
+                        break;
+
+                    case Element.direction.southeast:
+                        r.Y++;
+                        r.X++;
+                        break;
+                    case Element.direction.northwest:
+                        r.Y--;
+                        r.X--;
+                        break;
+                    case Element.direction.southwest:
+                        r.Y++;
+                        r.X--;
+                        break;
+                    case Element.direction.northeast:
+                        r.Y--;
+                        r.X++;
+                        break;
+                        // TODO test diagonals
+                }
 
                 index++;
             }
