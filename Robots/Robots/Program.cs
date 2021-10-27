@@ -28,6 +28,7 @@ namespace Robots
             Console.CursorVisible = false;
 
             Simulation test = new Simulation(40, 10);
+            test.Run();
 
             Console.ReadKey();
         }

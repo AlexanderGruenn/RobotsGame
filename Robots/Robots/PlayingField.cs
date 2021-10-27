@@ -86,7 +86,6 @@ namespace Robots
             {
                 Element.direction dir = BestMove(index);
                 field[r.X, r.Y] = null;
-
                 switch (dir)
                 {
                     case Element.direction.north:
@@ -118,7 +117,8 @@ namespace Robots
                         r.Y--;
                         r.X++;
                         break;
-                        // TODO test diagonals
+                    default:
+                        break;
                 }
                 field[r.X, r.Y] = r;
                 index++;

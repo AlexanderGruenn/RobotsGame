@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Robots
@@ -11,7 +12,17 @@ namespace Robots
         PlayingField field;
         bool gameOver = false;
         
-        
+        public void Run ()
+        {
+            do
+            {
+                Console.Clear();
+                field.MoveRobots();
+                field.Print();
+
+                Thread.Sleep(100);
+            } while (true);
+        }
 
 
 
