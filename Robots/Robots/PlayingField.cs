@@ -42,21 +42,7 @@ namespace Robots
             {
                 Console.SetCursorPosition(c.X, c.Y);
                 Console.Write(c.ToString());
-            }
-
-            //for (int x = 0; x < Console.WindowWidth; x++)
-            //{
-            //    for (int y = 0; y < Console.WindowHeight; y++)
-            //    {
-            //        Console.SetCursorPosition(x, y);
-            //        if (field[x, y] == null)
-            //        {
-            //            Console.Write(" ");
-            //            continue;
-            //        }
-            //        Console.Write(field[x,y]);
-            //    }
-            //}
+            }           
         }
         public void SpawnRobots(int number)
         {
@@ -120,9 +106,71 @@ namespace Robots
                     default:
                         break;
                 }
+                if (field[r.X, r.Y] is Player)
+                    return true;
+                if (field[r.X, r.Y] is Trap)
+                {
+                    elements.Remove(robots[index]);
+                    robots.RemoveAt(index);
+
+                    return false;
+                }
+                if (field[r.X, r.Y] is Robot)
+                {
+                    elements.Remove(robots[index]);
+                    robots.RemoveAt(index);
+                    elements.Remove(field[r.X, r.Y]);
+                    robots.Remove(field[r.X, r.Y] as Robot);
+
+                    return false;
+                }                             
                 field[r.X, r.Y] = r;
                 index++;
             }
+            return false;
+        }
+        public bool MovePlayer ()
+        {
+            field[player.X, player.Y] = null;
+            string dir = Console.ReadLine();
+
+            switch (dir)
+            {
+                case "n":
+                    player.Y--;
+                    break;
+                case "s":
+                    player.Y++;
+                    break;
+                case "w":
+                    player.X--;
+                    break;
+                case "e":
+                    player.X++;
+                    break;
+
+                case "se":
+                    player.Y++;
+                    player.X++;
+                    break;
+                case "nw":
+                    player.Y--;
+                    player.X--;
+                    break;
+                case "sw":
+                    player.Y++;
+                    player.X--;
+                    break;
+                case "ne":
+                    player.Y--;
+                    player.X++;
+                    break;
+                default:
+                    break;
+            }
+            if (field[player.X, player.Y] is Element)
+                return true;
+            field[player.X, player.Y] = player;
 
             return false;
         }
@@ -130,7 +178,7 @@ namespace Robots
         {
             player = new Player();
             elements.Add(player);
-            field[x, y] = player;
+            field[player.X, player.Y] = player;
             SpawnTraps(trapsNumber);
             SpawnRobots(robotsNumber);
             Print();
