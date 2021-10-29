@@ -21,9 +21,7 @@ namespace Robots
             while (true)
             {
                 score++;
-                Console.Clear();
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.Gray;
+                ConsoleReset();
 
                 gameOver = field.MoveRobots();
                 if (gameOver)
@@ -36,10 +34,12 @@ namespace Robots
 
                 field.Print();
             }
+            ConsoleReset();
+
             if (score > highscore)
             {
                 string message1 = "CONGRATULATIONS!!!";
-                string message2 = "YOU HAVE ACHIEVED A NEW HIGHSCORE";
+                string message2 = $"YOU HAVE ACHIEVED A NEW HIGHSCORE OF {score} SURIVIVED TURNS!";
 
                 Console.SetCursorPosition(Console.WindowWidth / 2 - message1.Length / 2, Console.WindowHeight / 2);
                 Console.WriteLine(message1);
@@ -47,6 +47,24 @@ namespace Robots
                 Console.WriteLine(message2);
                 SaveHighscore();
             }
+            else
+            {
+                string message1 = "GAME OVER!!!";
+                string message2 = $"YOU HAVE SURVIVED {score} TURNS!";
+
+                Console.SetCursorPosition(Console.WindowWidth / 2 - message1.Length / 2, Console.WindowHeight / 2);
+                Console.WriteLine(message1);
+                Console.SetCursorPosition(Console.WindowWidth / 2 - message2.Length / 2, Console.WindowHeight / 2 + 2);
+                Console.WriteLine(message2);
+                SaveHighscore();
+            }
+        }
+
+        public static void ConsoleReset()
+        {
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public void ReadHighScore ()
@@ -67,9 +85,16 @@ namespace Robots
             }
         }
 
+        public void CreateHighscoreFile ()
+        {
+            File.Create("highscore.txt");
+        }
+
         public Simulation (int robotsNumber, int trapsNumber)
         {
             field = new PlayingField(robotsNumber, trapsNumber);
+            if (!File.Exists("highscore.txt"))
+                CreateHighscoreFile();
             ReadHighScore();
         }
     }
