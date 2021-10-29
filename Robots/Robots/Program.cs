@@ -25,9 +25,7 @@ namespace Robots
             int maxWidth = Console.LargestWindowWidth;
             int maxHeight = Console.LargestWindowWidth;
 
-            Console.CursorVisible = false;
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Simulation.ConsoleReset();
 
             Simulation test = new Simulation(40, 500);
             test.Run();

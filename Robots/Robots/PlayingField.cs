@@ -131,6 +131,7 @@ namespace Robots
         }
         public bool MovePlayer ()
         {
+            Console.SetCursorPosition(Console.WindowWidth / 2, 0);
             field[player.X, player.Y] = null;
             string dir = Console.ReadLine();
 

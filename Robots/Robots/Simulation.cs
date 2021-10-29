@@ -63,6 +63,7 @@ namespace Robots
         public static void ConsoleReset()
         {
             Console.Clear();
+            Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Gray;
         }
